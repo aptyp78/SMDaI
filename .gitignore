@@ -1,0 +1,19 @@
+# macOS metadata
+.DS_Store
+docs/.DS_Store
+
+# Local secrets (do not commit)
+Secrets/
+secrets/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
