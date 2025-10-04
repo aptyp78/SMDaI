@@ -1,7 +1,7 @@
 name: triage-pr-to-project
 on:
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
 jobs:
   add:
     runs-on: ubuntu-latest
