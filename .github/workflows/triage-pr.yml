@@ -1,19 +1,17 @@
-name: triage-to-project
+name: triage-pr-to-project
 on:
-  issues:
+  pull_request:
     types: [opened]
 jobs:
   add:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      issues: write
+      pull-requests: write
       projects: write
     steps:
-      - name: Add issue to GitHub Project (v2)
+      - name: Add PR to GitHub Project (v2)
         uses: actions/add-to-project@v1
         with:
           project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ secrets.SMD_Project_Repo }}
-          labeled: ""
-          label-operator: OR
