@@ -22,7 +22,7 @@ def main():
 
     base = load_json(args.baseline)
     met = load_json(args.metrics)
-    met_flat = flatten("", met, {}) if isinstance(met, dict) else met
+    met_flat = flatten("", met, {})
 
     rows = []
     failed = False
