@@ -1,0 +1,22 @@
+name: Experiment
+description: Исследование/проба гипотезы (не обязательно попадёт в релиз)
+labels: ["type:experiment"]
+body:
+  - type: textarea
+    id: hypothesis
+    attributes: { label: Гипотеза и мотивация }
+    validations: { required: true }
+  - type: textarea
+    id: design
+    attributes:
+      label: Дизайн эксперимента
+      value: |
+        - Датасеты:
+        - Метрики:
+        - Критерий остановки:
+  - type: textarea
+    id: risks
+    attributes: { label: Риски/ограничения }
+  - type: textarea
+    id: outcome
+    attributes: { label: Ожидаемый результат и next steps }

@@ -1,0 +1,7 @@
+{
+  "corpus.ingestion_ok": 1.0,
+  "ling.ner_f1": 0.50,
+  "embed.search_ndcg@10": 0.20,
+  "graph.edges_with_evidence_ratio": 0.60,
+  "qa.accuracy": 0.40
+}

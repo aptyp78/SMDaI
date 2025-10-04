@@ -1,0 +1,60 @@
+name: ci
+on:
+  push:
+    branches: [ "main", "feat/**", "feature/**" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install base tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest ruff mypy
+
+      - name: Lint (ruff) — не фейлим ранний этап
+        continue-on-error: true
+        run: ruff check .
+
+      - name: Type check (mypy) — не фейлим ранний этап
+        continue-on-error: true
+        run: mypy || true
+
+      - name: Run tests if present
+        run: |
+          if [ -d tests ]; then pytest -q; else echo "no tests/ yet"; fi
+
+      - name: Ensure metrics exist (mini-pipeline or dummy)
+        run: |
+          if [ -f Makefile ] && make -n pipeline-mini >/dev/null 2>&1; then
+            make pipeline-mini
+          fi
+          python scripts/generate_dummy_metrics.py
+
+      - name: Skeptic check (baseline vs metrics)
+        run: |
+          python eval/skeptic_check.py \
+            --baseline eval/baseline.json \
+            --metrics eval/metrics.json \
+            --report eval/report.md
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skeptic-report
+          path: eval/report.md

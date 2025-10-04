@@ -1,0 +1,45 @@
+name: Feature
+description: Новая функциональность для конвейера (corpus|ling|embed|graph|qa|eval)
+labels: ["type:feature"]
+body:
+  - type: input
+    id: objective
+    attributes:
+      label: Зачем (Objective)
+      placeholder: Краткое описание цели (связь с KR)
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Критерии приёмки (измеримые)
+      render: markdown
+      placeholder: Что считаем успехом?
+    validations: { required: true }
+  - type: input
+    id: area
+    attributes:
+      label: Область
+      placeholder: corpus|ling|embed|graph|qa|eval
+    validations: { required: true }
+  - type: textarea
+    id: data
+    attributes:
+      label: Данные/снапшоты
+      placeholder: Пути к /data/snapshots/... и условия лицензии
+  - type: textarea
+    id: plan
+    attributes:
+      label: План/чек-лист
+      value: |
+        - [ ] Шаг 1
+        - [ ] Шаг 2
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Ожидаемое влияние на метрики
+      placeholder: Какие метрики улучшатся и насколько?
+  - type: textarea
+    id: links
+    attributes:
+      label: Связи/ссылки
+      placeholder: KR/ADR/другие Issue
