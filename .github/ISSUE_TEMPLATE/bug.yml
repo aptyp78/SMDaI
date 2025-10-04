@@ -1,0 +1,29 @@
+name: Bug
+description: Ошибка или регресс качества
+labels: ["type:bug"]
+body:
+  - type: input
+    id: area
+    attributes: { label: Область, placeholder: corpus|ling|embed|graph|qa|eval }
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: Шаги воспроизведения
+      value: |
+        1. ...
+        2. ...
+  - type: textarea
+    id: expected
+    attributes: { label: Ожидаемое поведение }
+  - type: textarea
+    id: actual
+    attributes: { label: Фактическое поведение / логи / артефакты }
+  - type: checkboxes
+    id: gates
+    attributes:
+      label: Gate
+      options:
+        - label: Блокирует Gate1
+        - label: Блокирует Gate2
+        - label: Блокирует Gate3
