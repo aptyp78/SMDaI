@@ -1,0 +1,16 @@
+name: triage-pr-to-project
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      projects: write
+    steps:
+      - name: Add PR to GitHub Project (v2)
+        uses: actions/add-to-project@v1
+        with:
+          project-url: ${{ secrets.PROJECT_URL }}

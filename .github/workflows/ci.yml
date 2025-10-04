@@ -42,8 +42,9 @@ jobs:
         run: |
           if [ -f Makefile ] && make -n pipeline-mini >/dev/null 2>&1; then
             make pipeline-mini
+          else
+            python scripts/generate_dummy_metrics.py
           fi
-          python scripts/generate_dummy_metrics.py
 
       - name: Skeptic check (baseline vs metrics)
         run: |
