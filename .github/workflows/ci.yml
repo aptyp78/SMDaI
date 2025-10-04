@@ -32,7 +32,7 @@ jobs:
 
       - name: Type check (mypy) — не фейлим ранний этап
         continue-on-error: true
-        run: mypy || true
+        run: mypy
 
       - name: Run tests if present
         run: |
