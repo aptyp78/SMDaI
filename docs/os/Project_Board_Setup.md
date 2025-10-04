@@ -10,7 +10,7 @@
 2. Добавить секрет в репозиторий:
    Settings → Secrets → Actions → New repository secret
    Name: PROJECT_URL, Value: <вставьте URL из шага 1>.
-   Дополнительно: создайте PAT со скоупами repo, project и добавьте его как секрет `PAT_SMD_PROJECT_REPO` — он используется в workflow triage для доступа к Projects v2.
+   Дополнительно: создайте PAT со скоупами repo, project и добавьте его как секрет `SMD_Project_Repo` — он используется в workflow triage для доступа к Projects v2.
 3. Проверка:
 
 * Откройте новый Issue — он должен появиться в доске в колонке Backlog.
